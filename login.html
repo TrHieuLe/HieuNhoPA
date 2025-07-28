@@ -86,11 +86,11 @@
     function login() {
       const input = document.getElementById("password").value;
       const error = document.getElementById("errorMsg");
-      const correctPassword = "hieunhocau"; // bạn có thể đổi ở đây
+      const correctPassword = "hieunhocau"; 
 
       if (input === correctPassword) {
         localStorage.setItem("isAdmin", "true");
-        // Chuyển sang trang chính (có thể là index.html hoặc admin.html)
+        
         window.location.href = "index.html";
       } else {
         error.style.display = "block";

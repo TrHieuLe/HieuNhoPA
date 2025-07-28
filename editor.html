@@ -40,11 +40,11 @@
     
     const encodedToken = 'Z2hwX2tnS2oyOVViSnVZbWpLQkpEVEdDUnpLaExLakNIdjFUaXlzTQ==';
   // --- Cấu hình GitHub ---
-  const GITHUB_TOKEN = atob(encodedToken); // ⚠️ Dán mã PAT của bạn vào đây
-  const GITHUB_REPO = 'my-blog-posts'; // Tên kho chứa của bạn
-  const GITHUB_USER = 'TrHieuLe'; // Tên người dùng GitHub của bạn
+  const GITHUB_TOKEN = atob(encodedToken); 
+  const GITHUB_REPO = 'my-blog-posts'; 
+  const GITHUB_USER = 'TrHieuLe'; 
 
-  // Hàm loadDoc không thay đổi
+  
   function loadDoc() {
     var link = document.getElementById("docLink").value.trim();
     if (!link) {
@@ -73,13 +73,13 @@
 
   // --- HÀM LƯU BÀI VIẾT MỚI ---
   async function savePost(newPost) {
-    // Tạo tên file duy nhất dựa trên tiêu đề và ngày giờ
+    
     const slug = newPost.title.toLowerCase()
       .replace(/ /g, '-')
       .replace(/[^\w-]+/g, '');
-    ///const date = new Date().toISOString().split('T')[0]; // Lấy YYYY-MM-DD
+    
     const fileName = `${slug}.html`;
-    const filePath = `posts/${fileName}`; // Lưu vào thư mục 'posts'
+    const filePath = `posts/${fileName}`; 
 
     // GitHub API yêu cầu nội dung phải được mã hóa Base64
     const contentBase64 = btoa(unescape(encodeURIComponent(newPost.content)));
@@ -99,7 +99,7 @@
           content: contentBase64,
           committer: {
             name: GITHUB_USER,
-            email: 'user@example.com' // Email này không quan trọng lắm
+            email: 'user@example.com' 
           }
         })
       });
@@ -110,8 +110,7 @@
       }
 
       alert("✅ TrHieuLe: Bài viết đã được lưu thành cong");
-      // Tùy chọn: chuyển hướng hoặc xóa nội dung
-      // window.location.href = "some-page.html";
+      
       window.location.href = "speaker.html?fromEditor=true";
       setTimeout(() => {
         window.location.href = "speaker.html";
@@ -124,7 +123,7 @@
     
   }
 
-  // Hàm postDoc không thay đổi nhiều
+  
   function postDoc() {
     const content = document.getElementById("result").innerHTML;
     if (!content || content.trim() === "") {

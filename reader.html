@@ -36,21 +36,21 @@
 
   <script>
     // --- Cấu hình GitHub (giống hệt file đăng bài) ---
-    const GI = 'none'; // ⚠️ Dán mã PAT của bạn vào đây
-    const GITHUB_REPO = 'my-blog-posts'; // Tên kho chứa của bạn
-    const GITHUB_USER = 'TrHieuLe'; // Tên người dùng GitHub của bạn
+    const GI = 'none'; // ⚠️ 
+    const GITHUB_REPO = 'my-blog-posts'; 
+    const GITHUB_USER = 'TrHieuLe'; 
 
-    // Hàm để giải mã nội dung Base64 từ GitHub API
+    
     function decodeContent(base64) {
       try {
-        // Chuyển Base64 về chuỗi nhị phân
+       
         const binaryString = atob(base64);
-        // Chuyển chuỗi nhị phân về mảng byte
+        
         const bytes = new Uint8Array(binaryString.length);
         for (let i = 0; i < binaryString.length; i++) {
           bytes[i] = binaryString.charCodeAt(i);
         }
-        // Sử dụng TextDecoder để giải mã UTF-8, đảm bảo hiển thị đúng tiếng Việt
+        
         return new TextDecoder('utf-8').decode(bytes);
       } catch (e) {
         console.error("Lỗi giải mã Base64:", e);
@@ -60,7 +60,7 @@
 
     async function loadPost() {
       const urlParams = new URLSearchParams(window.location.search);
-      const fileName = urlParams.get("post"); // Lấy tên file từ URL, ví dụ: ?post=ten-file.html
+      const fileName = urlParams.get("post"); 
       const contentDiv = document.getElementById("content");
 
       if (!fileName) {
@@ -84,7 +84,7 @@
         }
 
         const data = await res.json();
-        // GitHub API trả về nội dung đã được mã hóa Base64
+       
         const decodedContent = decodeContent(data.content);
         contentDiv.innerHTML = decodedContent;
       } catch (err) {
@@ -93,7 +93,7 @@
       }
     }
 
-    // Chạy hàm khi trang được tải
+   
     loadPost();
   </script>
 </body>
