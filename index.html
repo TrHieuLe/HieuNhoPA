@@ -104,7 +104,7 @@
 </style>
 
     <style>
-        /* Thêm một chút CSS để có thể cuộn trang và thấy hiệu ứng */
+        
         body {
             font-family: sans-serif;
         }
@@ -116,7 +116,7 @@
             font-size: 2rem;
             background-color: #f0f0f0;
         }
-        /* Style cơ bản cho phần của bạn (để trông giống ví dụ hơn) */
+        
         .pricing-section { padding: 80px 0; }
         .section-title { text-align: center; margin-bottom: 50px; }
         .section-title h2 { font-size: 36px; }
@@ -195,13 +195,13 @@
   }
 
   #intro {
-    position: fixed; /* Hoặc absolute tùy vào layout */
+    position: fixed; /* Hoặc absolute */
     top: 0;
     left: 0;
     width: 100vw; /* 100% chiều rộng của màn hình */
     height: 100vh; /* 100% chiều cao của màn hình */
     overflow: hidden; /* Ẩn bất kỳ phần nào của video bị tràn ra ngoài */
-    z-index: 999; /* Đảm bảo video nằm trên các nội dung khác */
+    z-index: 999; 
 }
 
   #intro video {
@@ -209,7 +209,7 @@
     width: 100%;
     height: 100%;
 
-    /* Phép thuật nằm ở đây! */
+    
     /* - cover: Phóng to video để lấp đầy không gian mà không làm méo hình. 
       Phần thừa sẽ bị cắt đi (ẩn bởi overflow: hidden).
       - Giống hệt background-size: cover cho ảnh.
@@ -219,9 +219,9 @@
 video {
   width: 100%;
   height: auto;
-  object-fit: cover; /* hoặc contain tùy mục đích */
+  object-fit: cover; /* hoặc contain  */
 }
-  /* Ví dụ về nội dung khác trên video */
+  
   .blog-slider {
   background-image: url('img/img-cn/bg.jpg');
   background-size: cover;
@@ -391,9 +391,9 @@ video {
 <style>
 .ha-pic img {
     width: 100%;
-    height: 600px; /* hoặc 100% nếu dùng chung khung bố cục */
+    height: 600px; 
     object-fit: cover;
-    object-position: center top; /* hoặc center center */
+    object-position: center top; 
     border-radius: 10px;
 }
 </style>
@@ -472,17 +472,17 @@ video {
 
   <script>
     const intro = document.getElementById('intro');
-    const main = document.getElementById('main'); // Giả sử bạn có <div id="main"></div>
+    const main = document.getElementById('main'); 
     const video = document.getElementById('introVideo');
 
-    // Kiểm tra loại truy cập trang
+    
     const navType = performance.getEntriesByType("navigation")[0]?.type;
     const shouldSkipIntro = sessionStorage.getItem("skipIntro") === "true";
 
-    // Nếu là truy cập "quay lại" HOẶC có cờ skipIntro trong sessionStorage
+    
     if (navType === "back_forward" || shouldSkipIntro) {
         intro.style.display = 'none';
-        if (main) main.style.display = 'block'; // Hiển thị nội dung chính
+        if (main) main.style.display = 'block'; 
         document.body.style.overflow = 'auto';
 
         // Xóa cờ đi để lần sau vào lại web bình thường vẫn có intro
@@ -506,7 +506,7 @@ video {
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        // Sửa lại bộ chọn từ 'adminLink' thành '#adminLink'
+        
         const loginLink = document.querySelector('#adminLink'); 
         if (loginLink) {
             loginLink.addEventListener('click', (e) => {
@@ -517,7 +517,7 @@ video {
         }
         
         
-        const logoutLink = document.querySelector('#logoutLink'); // Thay bằng ID của nút logout
+        const logoutLink = document.querySelector('#logoutLink'); 
         if (logoutLink) {
             logoutLink.addEventListener('click', (e) => {
                 sessionStorage.setItem("skipIntro", "true");
@@ -1100,8 +1100,8 @@ video {
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
     AOS.init({
-        duration: 1000, // thời gian hiệu ứng (ms)
-        once: true      // chỉ chạy 1 lần khi cuộn đến
+        duration: 1000, 
+        once: true      
     });
     </script>
     <script>
