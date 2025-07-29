@@ -14,7 +14,7 @@
     padding: 40px 20px;
     color: #333;
   }
-  
+  /* ... phần CSS khác ... */
 
     #adminButton {
       position: absolute;
@@ -104,6 +104,7 @@
       <option value="Chiều">Chiều</option>
       <option value="Tối">Tối</option>
     </select>
+    <textarea id="requirements" name="requirements" placeholder="Yêu cầu/Tên Sự Kiện" rows="3" style="width:100%; margin-top: 10px;"></textarea>
     <button type="submit">Đặt lịch</button>
   </form>
 
@@ -119,6 +120,7 @@
         <th>Thứ</th>
         <th>Giờ</th>
         <th>Buổi</th>
+        <th>Yêu Cầu/Tên Sự Kiện</th>
         <th>MC phụ trách</th>
         <th>SĐT MC</th>
         <th>Duyệt</th>
@@ -197,9 +199,10 @@
     const date = document.getElementById("date").value;
     const time = document.getElementById("time").value;
     const buoi = document.getElementById("buoi").value;
+    const requirements = document.getElementById("requirements").value;
 
     const newAppointment = {
-      name, club, email, date, time, buoi,
+      name, club, email, date, time, buoi, requirements,
       mc: "Chưa duyệt", phone: "", approved: false
     };
 
@@ -216,9 +219,11 @@
       <input name="booking_date" value="${date}">
       <input name="booking_time" value="${time}">
       <input name="buoi" value="${buoi}">
+      <input name="requirements" value="${requirements}">
       <input name="to_email" value="trunghieu7305@gmail.com">
     `;
     document.body.appendChild(adminForm);
+
 
     emailjs.sendForm("service_0y7fhn8", "template_h1bhkoz", adminForm)
       .then(() => {
@@ -256,6 +261,7 @@
         <td>${thu}</td>
         <td>${appt.time}</td>
         <td>${appt.buoi}</td>
+        <td>${appt.requirements || "Không có"}</td>  <!-- Đã sửa ở đây -->
         <td>${isAdmin ? `<input type="text" value="${appt.mc}" onchange="updateMC(${index}, this.value)">` : appt.mc}</td>
         <td>${isAdmin ? `<input type="text" value="${appt.phone}" onchange="updatePhone(${index}, this.value)">` : appt.phone}</td>
         <td>${isAdmin ? (appt.approved ? "✅" : `<button onclick="approve(${index})">Duyệt</button>`) : (appt.approved ? "✅" : "⏳")}</td>
@@ -264,7 +270,7 @@
       `;
       tableBody.appendChild(row);
     });
-  }
+}
 
   async function approve(index) {
     const appointments = await fetchAppointments();
